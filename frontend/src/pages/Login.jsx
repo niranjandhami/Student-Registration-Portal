@@ -19,7 +19,12 @@ export default function Login() {
     try {
       const { token, user } = await loginStudent(email, password);
       login(token, user);
-      navigate("/dashboard");
+
+console.log("Login user:", user);
+
+setTimeout(() => {
+  navigate("/dashboard");
+}, 100);
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Please try again.");
     } finally {
