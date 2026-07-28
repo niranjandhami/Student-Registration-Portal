@@ -67,12 +67,15 @@ exports.loginStudent = async (req, res, next) => {
 
     const token = signToken({ id: student._id, role: "student" });
 
-    res.json({
-      success: true,
-      message: "Login successful.",
-      token,
-      user: student.toSafeObject(),
-    });
+   res.json({
+  success: true,
+  message: "Login successful.",
+  token,
+  user: {
+    ...student.toSafeObject(),
+    role: "student",
+  },
+});;
   } catch (err) {
     next(err);
   }

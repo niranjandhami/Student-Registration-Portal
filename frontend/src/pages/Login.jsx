@@ -17,14 +17,10 @@ export default function Login() {
     setError("");
     setSubmitting(true);
     try {
-      const { token, user } = await loginStudent(email, password);
-      login(token, user);
+  const { token, user } = await loginStudent(email, password);
 
-console.log("Login user:", user);
-
-setTimeout(() => {
-  navigate("/dashboard");
-}, 100);
+login(token, user);
+navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Please try again.");
     } finally {

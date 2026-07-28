@@ -13,7 +13,7 @@ export default function StudentDashboard() {
 
   useEffect(() => {
     getMyProfile()
-  .then(({ student }) => setStudent(student))
+      .then(({ student }) => setStudent(student))
       .catch((err) =>
         setError(
           err.response?.data?.message || "Could not load your profile."
