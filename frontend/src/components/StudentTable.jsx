@@ -12,9 +12,9 @@ export default function StudentTable({ students, onDelete }) {
   }
 
   return (
-    <div className="card" style={{ padding: 0, overflow: "hidden" }}>
-      <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+    <div className="card student-table-card">
+      <div className="table-wrapper">
+        <table className="student-table">
           <thead>
             <tr style={{ background: "var(--parchment-2)", textAlign: "left" }}>
               {["Roll No.", "Name", "Email", "Course", "Year", "Status", ""].map((h) => (

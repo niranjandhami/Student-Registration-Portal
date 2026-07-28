@@ -25,13 +25,13 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="container" style={{ padding: "44px 24px 80px" }}>
+    <div className="container dashboard-container">
       <p style={{ color: "var(--gold)", fontWeight: 700, fontSize: 12.5, textTransform: "uppercase", letterSpacing: "0.1em" }}>
         Registrar overview
       </p>
       <h1 style={{ fontSize: 30, marginTop: 8 }}>Welcome, {user?.username}</h1>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18, marginTop: 30 }}>
+      <div className="dashboard-stats">
         {stats.map((s) => (
           <div key={s.label} className="card">
             <p style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--slate)", fontWeight: 700 }}>
@@ -42,7 +42,7 @@ export default function AdminDashboard() {
         ))}
       </div>
 
-      <div className="card" style={{ marginTop: 28, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div className="card dashboard-action">
         <div>
           <h3 style={{ fontSize: 17 }}>Manage the roster</h3>
           <p style={{ marginTop: 6, color: "var(--slate)", fontSize: 14 }}>Search, review, and update any student's record.</p>

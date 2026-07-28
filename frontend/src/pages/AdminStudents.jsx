@@ -56,8 +56,8 @@ export default function AdminStudents() {
   };
 
   return (
-    <div className="container" style={{ padding: "44px 24px 80px" }}>
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+    <div className="container dashboard-container">
+      <div className="students-header">
         <div>
           <p style={{ color: "var(--gold)", fontWeight: 700, fontSize: 12.5, textTransform: "uppercase", letterSpacing: "0.1em" }}>
             Roster
@@ -65,18 +65,12 @@ export default function AdminStudents() {
           <h1 style={{ fontSize: 28, marginTop: 8 }}>All students</h1>
         </div>
 
-        <form onSubmit={handleSearchSubmit} style={{ display: "flex", gap: 10 }}>
+        <form onSubmit={handleSearchSubmit} className="students-search">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search name, roll number, course…"
-            style={{
-              border: "1px solid var(--line)",
-              borderRadius: "var(--radius-sm)",
-              padding: "10px 14px",
-              width: 280,
-              background: "var(--white)",
-            }}
+            className="students-search-input"
           />
           <button className="btn btn-primary btn-sm" type="submit">
             Search
@@ -109,7 +103,7 @@ export default function AdminStudents() {
           <StudentTable students={students} onDelete={handleDelete} />
 
           {pagination && pagination.totalPages > 1 && (
-            <div style={{ display: "flex", justifyContent: "center", gap: 10, marginTop: 24 }}>
+            <div className="pagination">
               <button className="btn btn-ghost btn-sm" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>
                 ← Previous
               </button>

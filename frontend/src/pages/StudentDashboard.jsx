@@ -27,7 +27,7 @@ export default function StudentDashboard() {
   }
 
   return (
-    <div className="container" style={{ padding: "44px 24px 80px" }}>
+    <div className="container dashboard-container">
       <p
         style={{
           color: "var(--gold)",
@@ -46,22 +46,14 @@ export default function StudentDashboard() {
 
       {error && <Banner type="error">{error}</Banner>}
 
-    <div className="dashboard-grid" style={{ marginTop: 28 }}>
-      
+      <div className="dashboard-grid">
+
         <StudentIdCard student={student} />
 
         <div className="card">
           <h3 style={{ fontSize: "17px" }}>Profile details</h3>
 
-          <dl
-            style={{
-              marginTop: 18,
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              rowGap: 18,
-              columnGap: 16,
-            }}
-          >
+          <dl className="profile-details">
             {[
               ["Phone", student?.phone || "Not provided"],
               ["Address", student?.address || "Not provided"],
@@ -104,13 +96,7 @@ export default function StudentDashboard() {
             ))}
           </dl>
 
-          <div
-            style={{
-              marginTop: 26,
-              display: "flex",
-              gap: 12,
-            }}
-          >
+          <div className="profile-actions">
             <Link to="/profile/edit" className="btn btn-primary">
               Edit Profile
             </Link>
