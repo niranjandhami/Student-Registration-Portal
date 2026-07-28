@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export default function Landing() {
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "calc(100vh - 72px)" }}>
       <section className="hero-section">
         <div className="container hero-grid">
           <div>
@@ -46,6 +46,38 @@ export default function Landing() {
             <h3 style={{ color: "var(--parchment)", fontSize: 22, marginTop: 8 }}>Amara Osei</h3>
             <p style={{ fontSize: 13.5, color: "rgba(247,245,239,0.6)", marginTop: 4 }}>B.Sc. Computer Science · Year 3</p>
           </div>
+        </div>
+      </section>
+
+      <section className="container features-section" style={{ flex: "1 0 auto" }}>
+        <div className="feature-grid">
+          {[
+            {
+              title: "Self-service registration",
+              body: "Students register and keep their own profile current with instant validation and no paperwork.",
+            },
+            {
+              title: "Searchable roster",
+              body: "Find any student quickly by name, roll number, or course.",
+            },
+            {
+              title: "Role-based access",
+              body: "Students manage only their own records while administrators manage the complete roster.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="card">
+              <h3 style={{ fontSize: 18 }}>{item.title}</h3>
+              <p
+                style={{
+                  marginTop: 10,
+                  color: "var(--slate)",
+                  lineHeight: 1.6,
+                }}
+              >
+                {item.body}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

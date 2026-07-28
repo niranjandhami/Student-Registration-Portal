@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMyProfile } from "../services/studentService";
 import StudentIdCard from "../components/StudentIdCard.jsx";
-import Loader from "../components/Loader.jsx";
+import { DashboardSkeleton } from "../components/Loader.jsx";
 import Banner from "../components/Banner.jsx";
 
 export default function StudentDashboard() {
-
   const [student, setStudent] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -23,7 +22,7 @@ export default function StudentDashboard() {
   }, []);
 
   if (loading) {
-    return <Loader label="Loading your record" />;
+    return <DashboardSkeleton />;
   }
 
   return (
@@ -47,7 +46,6 @@ export default function StudentDashboard() {
       {error && <Banner type="error">{error}</Banner>}
 
       <div className="dashboard-grid">
-
         <StudentIdCard student={student} />
 
         <div className="card">
