@@ -46,15 +46,8 @@ export default function StudentDashboard() {
 
       {error && <Banner type="error">{error}</Banner>}
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "380px 1fr",
-          gap: 28,
-          marginTop: 28,
-          alignItems: "start",
-        }}
-      >
+    <div className="dashboard-grid" style={{ marginTop: 28 }}>
+      
         <StudentIdCard student={student} />
 
         <div className="card">

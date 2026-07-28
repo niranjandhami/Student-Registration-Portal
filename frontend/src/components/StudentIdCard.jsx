@@ -40,7 +40,7 @@ export default function StudentIdCard({ student }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
         <div>
           <p style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold-soft)", fontWeight: 700 }}>
-            Enrolla · Student ID
+            Student Registration Portal
           </p>
           <p className="mono" style={{ fontSize: 13, color: "rgba(247,245,239,0.7)", marginTop: 6 }}>
             {student.rollNumber}
@@ -50,7 +50,7 @@ export default function StudentIdCard({ student }) {
           className={`badge badge-${student.status}`}
           style={{ background: "rgba(201,162,39,0.18)", color: "var(--gold-soft)" }}
         >
-          {student.status}
+          {student.status?.toUpperCase()}
         </span>
       </div>
 
@@ -58,8 +58,8 @@ export default function StudentIdCard({ student }) {
         <div
           aria-hidden="true"
           style={{
-            width: 56,
-            height: 56,
+            width: 72,
+            height: 72,
             borderRadius: "50%",
             background: "var(--gold)",
             display: "flex",
@@ -67,7 +67,7 @@ export default function StudentIdCard({ student }) {
             justifyContent: "center",
             fontFamily: "var(--font-display)",
             fontWeight: 700,
-            fontSize: 20,
+            fontSize: 26,
             color: "var(--ink)",
             flexShrink: 0,
             border: "2px solid rgba(247,245,239,0.35)",
@@ -97,19 +97,97 @@ export default function StudentIdCard({ student }) {
         }}
       >
         <div>
-          <p style={{ color: "rgba(247,245,239,0.55)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em" }}>Year</p>
-          <p style={{ marginTop: 3, fontWeight: 600 }}>{student.yearOfStudy || "—"}</p>
+          <p
+            style={{
+              color: "rgba(247,245,239,0.55)",
+              fontSize: 11,
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Year
+          </p>
+          <p style={{ marginTop: 3, fontWeight: 600 }}>
+            {student.yearOfStudy ? `Year ${student.yearOfStudy}` : "—"}
+          </p>
         </div>
+
         <div>
-          <p style={{ color: "rgba(247,245,239,0.55)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em" }}>Email</p>
-          <p style={{ marginTop: 3, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          <p
+            style={{
+              color: "rgba(247,245,239,0.55)",
+              fontSize: 11,
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Email
+          </p>
+          <p
+            style={{
+              marginTop: 3,
+              fontWeight: 600,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
             {student.email}
+          </p>
+        </div>
+
+        <div>
+          <p
+            style={{
+              color: "rgba(247,245,239,0.55)",
+              fontSize: 11,
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Phone
+          </p>
+          <p style={{ marginTop: 3, fontWeight: 600 }}>
+            {student.phone || "Not provided"}
+          </p>
+        </div>
+
+        <div>
+          <p
+            style={{
+              color: "rgba(247,245,239,0.55)",
+              fontSize: 11,
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Course
+          </p>
+          <p
+            style={{
+              marginTop: 3,
+              fontWeight: 600,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {student.course || "Not provided"}
           </p>
         </div>
       </div>
 
       {/* barcode-style flourish */}
-      <div style={{ marginTop: 22, display: "flex", gap: 2, height: 26, alignItems: "flex-end" }} aria-hidden="true">
+      <div
+        style={{
+          marginTop: 22,
+          display: "flex",
+          gap: 2,
+          height: 26,
+          alignItems: "flex-end",
+        }}
+        aria-hidden="true"
+      >
         {Array.from({ length: 38 }).map((_, i) => (
           <div
             key={i}

@@ -1,3 +1,4 @@
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginAdmin } from "../services/authService";
@@ -7,6 +8,7 @@ import Banner from "../components/Banner.jsx";
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const { login } = useAuth();
@@ -50,10 +52,46 @@ export default function AdminLogin() {
             <label htmlFor="email">Email</label>
             <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <div className="field">
-            <label htmlFor="password">Password</label>
-            <input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
+    <div className="field">
+  <label htmlFor="password">Password</label>
+
+  <div style={{ position: "relative", width: "100%" }}>
+    <input
+  id="password"
+  type={showPassword ? "text" : "password"}
+  required
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  style={{
+    width: "100%",
+    paddingRight: "48px",
+    boxSizing: "border-box",
+  }}
+/>
+
+    <button
+      type="button"
+      onClick={() => setShowPassword(!showPassword)}
+      style={{
+  position: "absolute",
+  top: "50%",
+  right: "14px",
+  transform: "translateY(-50%)",
+  border: "none",
+  background: "transparent",
+  cursor: "pointer",
+  padding: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "#666",
+}}
+      aria-label={showPassword ? "Hide password" : "Show password"}
+    >
+      {showPassword ? <FaEyeSlash /> : <FaEye />}
+    </button>
+  </div>
+</div>
           <button className="btn btn-primary" type="submit" disabled={submitting} style={{ width: "100%" }}>
             {submitting ? "Signing in…" : "Sign in"}
           </button>
