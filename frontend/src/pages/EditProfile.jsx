@@ -99,7 +99,7 @@ export default function EditProfile() {
           <div className="field">
             <label htmlFor="yearOfStudy">Year of study</label>
             <select id="yearOfStudy" value={form.yearOfStudy} onChange={update("yearOfStudy")}>
-              {[1, 2, 3, 4, 5, 6].map((y) => (
+              {[1, 2, 3, 4].map((y) => (
                 <option key={y} value={y}>
                   Year {y}
                 </option>
