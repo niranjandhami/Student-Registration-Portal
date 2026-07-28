@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getMyProfile, updateMyProfile, changeMyPassword } from "../services/studentService";
 import Loader from "../components/Loader.jsx";
 import Banner from "../components/Banner.jsx";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function EditProfile() {
   const [form, setForm] = useState(null);
@@ -16,6 +17,8 @@ export default function EditProfile() {
   const [pwError, setPwError] = useState("");
   const [pwSuccess, setPwSuccess] = useState("");
   const [pwSaving, setPwSaving] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
   useEffect(() => {
     getMyProfile()
@@ -168,24 +171,80 @@ export default function EditProfile() {
         </div>
         <div className="field">
           <label htmlFor="currentPassword">Current password</label>
-          <input
-            id="currentPassword"
-            type="password"
-            required
-            value={pwForm.currentPassword}
-            onChange={(e) => setPwForm((f) => ({ ...f, currentPassword: e.target.value }))}
-          />
+          <div style={{ position: "relative" }}>
+            <input
+              id="currentPassword"
+              type={showCurrentPassword ? "text" : "password"}
+              required
+              value={pwForm.currentPassword}
+              onChange={(e) =>
+                setPwForm((f) => ({
+                  ...f,
+                  currentPassword: e.target.value,
+                }))
+              }
+              style={{ paddingRight: 40, width: "100%" }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowCurrentPassword((s) => !s)}
+              aria-label={showCurrentPassword ? "Hide password" : "Show password"}
+              style={{
+                position: "absolute",
+                right: 10,
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                display: "flex",
+                alignItems: "center",
+                color: "var(--slate)",
+              }}
+            >
+              {showCurrentPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
         <div className="field">
           <label htmlFor="newPassword">New password</label>
-          <input
-            id="newPassword"
-            type="password"
-            required
-            minLength={6}
-            value={pwForm.newPassword}
-            onChange={(e) => setPwForm((f) => ({ ...f, newPassword: e.target.value }))}
-          />
+          <div style={{ position: "relative" }}>
+            <input
+              id="newPassword"
+              type={showNewPassword ? "text" : "password"}
+              required
+              minLength={6}
+              value={pwForm.newPassword}
+              onChange={(e) =>
+                setPwForm((f) => ({
+                  ...f,
+                  newPassword: e.target.value,
+                }))
+              }
+              style={{ paddingRight: 40, width: "100%" }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowNewPassword((s) => !s)}
+              aria-label={showNewPassword ? "Hide password" : "Show password"}
+              style={{
+                position: "absolute",
+                right: 10,
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                display: "flex",
+                alignItems: "center",
+                color: "var(--slate)",
+              }}
+            >
+              {showNewPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
         <button className="btn btn-ghost" type="submit" disabled={pwSaving}>
           {pwSaving ? "Updating…" : "Update password"}
