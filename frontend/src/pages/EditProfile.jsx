@@ -84,18 +84,43 @@ export default function EditProfile() {
           <input id="name" required value={form.name} onChange={update("name")} />
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <div className="form-grid">
           <div className="field">
             <label htmlFor="course">Course</label>
-            <input id="course" value={form.course} onChange={update("course")} />
+            <select
+              id="course"
+              value={form.course}
+              onChange={update("course")}
+              required
+            >
+              <option value="">Select Course</option>
+              <option value="B.Sc. Computer Science">B.Sc. Computer Science</option>
+              <option value="B.Sc. Information Technology">B.Sc. Information Technology</option>
+              <option value="B.Sc. Software Engineering">B.Sc. Software Engineering</option>
+              <option value="B.Sc. Cyber Security">B.Sc. Cyber Security</option>
+              <option value="B.Sc. Data Science">B.Sc. Data Science</option>
+            </select>
           </div>
           <div className="field">
             <label htmlFor="department">Department</label>
-            <input id="department" value={form.department} onChange={update("department")} />
+            <select
+              id="department"
+              value={form.department}
+              onChange={update("department")}
+              required
+            >
+              <option value="">Select Department</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Computing & Information Sciences">
+                Computing & Information Sciences
+              </option>
+              <option value="Business Administration">Business Administration</option>
+              <option value="Natural Sciences">Natural Sciences</option>
+            </select>
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <div className="form-grid">
           <div className="field">
             <label htmlFor="yearOfStudy">Year of study</label>
             <select id="yearOfStudy" value={form.yearOfStudy} onChange={update("yearOfStudy")}>
@@ -108,7 +133,15 @@ export default function EditProfile() {
           </div>
           <div className="field">
             <label htmlFor="phone">Phone</label>
-            <input id="phone" value={form.phone} onChange={update("phone")} />
+            <input
+              id="phone"
+              type="tel"
+              inputMode="numeric"
+              pattern="[0-9]{10}"
+              maxLength={10}
+              value={form.phone}
+              onChange={update("phone")}
+            />
           </div>
         </div>
 
